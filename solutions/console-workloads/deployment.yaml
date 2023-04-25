@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hello-world
+  namespace: console-apps
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: quay.io/redhattraining/hello-world-nginx:v1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
